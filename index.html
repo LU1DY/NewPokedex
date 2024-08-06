@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <img class="pokemon" src="assets/pokemon.png" alt="" />
+          </li>
+          <li>
+            <div class="inputSearchHeader">
+              <form action="" class="form">
+                <input
+                  id="input"
+                  type="search"
+                  placeholder="Buscar pokemon..."
+                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  class="feather feather-search"
+                  viewBox="0 0 24 24"
+                >
+                  <defs></defs>
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="M21 21l-4.35-4.35"></path>
+                </svg>
+              </form>
+            </div>
+          </li>
+          <li>
+            <button id="prev">
+              <span class="button_top">Anterior</span>
+            </button>
+            <button id="next">
+              <span class="button_top">Proximo</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div class="description">
+          <h2 id="pokemonName">Bulbassaur</h2>
+          <div class="imgContainer">
+            <img id="types" src="tipos/planta.png" alt="" />
+          </div>
+          <p id="desc"></p>
+          <div class="detailsPokemon"></div>
+        </div>
+        <img class="picPokemon" id="picPokemon" src="" alt="" />
+      </div>
+      <div id="rowDetails" class="containerDetails">
+        <div class="columns">
+          <h2>Cartas</h2>
+          <div class="cards"></div>
+          <button id="cardsMore">
+            <span class="button_top"> Ver mais </span>
+          </button>
+        </div>
+        <div class="row">
+          <div class="columns">
+            <h2>Evoluções</h2>
+            <div class="pokeEvo"></div>
+          </div>
+          <div class="columns">
+            <h2>Estatísticas</h2>
+            <div class="card">
+              <ul class="stats"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="containerCards" class="overlayContainerCards">
+      <button id="cardsLess">
+        <span class="button_top"> Ver menos </span>
+      </button>
+      <div id="cardsContainerMore"></div>
+    </div>
+    <script src="js/script.js"></script>
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,854 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  font-size: 62.5%;
+  font-family: "Oxanium", cursive;
+}
+.row {
+  display: flex;
+  column-gap: 6rem;
+}
+.overlayContainerCards {
+  display: none !important;
+}
+button {
+  --button_radius: 0.75em;
+  --button_color: #e8e8e8;
+  --button_outline_color: #000000;
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--button_radius);
+  background: var(--button_outline_color);
+  cursor: pointer;
+  &:hover .button_top {
+    transform: translateY(-0.33em);
+  }
+  &:active .button_top {
+    transform: translateY(0);
+  }
+  & .button_top {
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid var(--button_outline_color);
+    border-radius: var(--button_radius);
+    padding: 0.75em 1.5em;
+    background: linear-gradient(to bottom right, #ffcc99, #ff9966);
+    color: var(--button_outline_color);
+    transform: translateY(-0.2em);
+    transition: transform 0.1s ease;
+  }
+}
+::selection {
+  background: red;
+  color: #ffffff;
+}
+::-webkit-selection {
+  background: var(--details-color-primary);
+  color: #ffffff;
+}
+::-moz-selection {
+  background: var(--details-color-primary);
+  color: #ffffff;
+}
+::-webkit-scrollbar {
+  width: 0.1rem;
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #fff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 3rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  & nav {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    & ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 85%;
+      & li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 2rem;
+        & .pokemon {
+          width: 12rem;
+          object-fit: contain;
+        }
+        & .inputSearchHeader {
+          display: flex;
+          padding: 1rem 2rem;
+          border-radius: 2.5rem;
+          box-shadow: 0 2px 6px 0 rgba(136, 148, 171, 0.2),
+            0 24px 20px -24px rgba(71, 82, 107, 0.1);
+          & form {
+            display: flex;
+            & input {
+              font-size: 1.6rem;
+              border: 0;
+              outline: none !important;
+              width: 35rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 6rem;
+  width: 100%;
+  padding: 4rem;
+  margin-top: 8rem;
+  & .container {
+    width: 80%;
+    height: 55%;
+    border-radius: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    & #picPokemon {
+      position: relative;
+      width: 40rem;
+      top: -1.5rem;
+      object-fit: contain;
+    }
+    & .description {
+      margin-left: 23rem;
+      width: 50rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: baseline;
+      & h2 {
+        font-size: 5rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+      }
+      & .imgContainer {
+        position: absolute;
+        left: 0rem;
+        bottom: 0rem;
+        width: 20rem;
+        height: 20rem;
+        border-radius: 5rem;
+        & #types {
+          position: absolute;
+          left: -2.5rem;
+          bottom: -2.5rem;
+          width: 100%;
+        }
+      }
+      & p {
+        font-size: 2rem;
+      }
+      & .detailsPokemon {
+        border-bottom: 2px solid #000;
+        padding-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        column-gap: 1rem;
+        justify-content: center;
+        position: absolute;
+        bottom: 5%;
+        right: 35%;
+        & span {
+          font-size: 2.4rem;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  & .containerDetails {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5rem;
+    width: 10rem;
+    width: 80dvw;
+    height: 100%;
+    & .columns {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 2rem;
+      align-items: center;
+      & h2 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+      }
+      & .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 22rem);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        & img {
+          object-fit: contain;
+          width: 15rem;
+        }
+      }
+      & .pokeEvo {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2rem;
+        height: 39rem;
+        overflow: scroll;
+        padding-right: 1rem;
+        padding-bottom: 1rem;
+        .card-poke {
+          width: 20rem;
+          height: 27.7rem;
+          border-radius: 1rem;
+          background: transparent;
+          border: 0.5vmin solid #05060f;
+          box-shadow: 0.4rem 0.4rem #05060f;
+          overflow: hidden;
+          color: black;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          & h3 {
+            font-size: 2rem;
+          }
+          & img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+
+      .card-poke-card {
+        width: 20rem;
+        height: 27.7rem;
+        background: transparent;
+        border-radius: 1rem;
+        border: 0.5vmin solid #05060f;
+        box-shadow: 0.4rem 0.4rem #05060f;
+        overflow: hidden;
+        color: black;
+        position: relative;
+        & img {
+          width: 19.4rem;
+          object-fit: contain;
+        }
+      }
+      .card {
+        width: 25rem;
+        height: 35rem;
+        background: transparent;
+        border-radius: 1rem;
+        color: black;
+        & ul {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          & li {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 0.5vmin solid #05060f;
+            box-shadow: 0.4rem 0.4rem #05060f;
+            border-radius: 1rem;
+            background-color: black;
+            padding: 0.4rem 0.8rem;
+            color: #fff;
+            & h3 {
+              font-size: 2.5rem;
+            }
+            & span {
+              font-size: 2.5rem;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+
+      /*Card content*/
+      .pricing-block-content {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .pricing-plan {
+        color: #05060f;
+        font-size: 1.3rem;
+        line-height: 1.25;
+        font-weight: 700;
+      }
+
+      .price-value {
+        display: flex;
+        color: #05060f;
+        font-size: 1.8rem;
+        line-height: 1.25;
+        font-weight: 700;
+      }
+
+      .pricing-note {
+        opacity: 0.8;
+      }
+
+      /*Checklist*/
+      .check-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .check-list-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      & .evo {
+        display: flex;
+        justify-content: baseline;
+        flex-direction: column;
+        row-gap: 1rem;
+        & .rowEvo {
+          border-radius: 2.5rem;
+          display: flex;
+          align-items: center;
+          background-color: green;
+          & img {
+            width: 10rem;
+          }
+          & h3 {
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+#containerCards {
+  width: 135rem;
+  border: 0.5vmin solid #05060f;
+  box-shadow: 0.4rem 0.4rem #05060f;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 26%;
+  left: 6%;
+  backdrop-filter: blur(5px);
+  & #cardsLess {
+    align-self: center;
+    margin-bottom: 2rem;
+  }
+  & #cardsContainerMore {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 3rem;
+    & img {
+      width: 23rem;
+      height: 30rem;
+      object-fit: contain;
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  & button {
+    & .button_top {
+      padding: 0.75rem 1.5rem;
+    }
+  }
+  header {
+    & nav {
+      & ul {
+        width: 100%;
+        & li {
+          & .inputSearchHeader {
+            & form {
+              & input {
+                width: 25rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  main {
+    & .container {
+      width: 100%;
+      & #picPokemon {
+        position: relative;
+        width: 40rem;
+        top: -1.5rem;
+        object-fit: contain;
+      }
+      & .description {
+        margin-left: 20rem;
+        width: 35rem;
+        & h2 {
+          font-size: 4rem;
+        }
+        & .imgContainer {
+          & #types {
+            position: absolute;
+            left: -2.5rem;
+            bottom: -2.5rem;
+            width: 100%;
+          }
+        }
+        & p {
+          font-size: 1.6rem;
+        }
+        & .detailsPokemon {
+          & span {
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+    & .containerDetails {
+      flex-direction: column;
+      & .columns {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  & button {
+    & .button_top {
+      padding: 0.5rem 1rem;
+    }
+  }
+  header {
+    padding: 1rem 0rem;
+    & nav {
+      width: 100%;
+      justify-content: space-between;
+      & ul {
+        & li {
+          & .inputSearchHeader {
+            bottom: -40%;
+            left: 8%;
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-top: 2rem;
+            height: max-content;
+            & form {
+              & input {
+                width: 30rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 6rem;
+    width: 100%;
+    padding: 4rem;
+    margin-top: 8rem;
+    & .container {
+      flex-direction: column;
+      & #picPokemon {
+        width: 30rem;
+      }
+      & .description {
+        margin-left: 0;
+        width: 34rem;
+        text-align: center;
+        & h2 {
+          font-size: 4rem;
+        }
+        & .imgContainer {
+          position: absolute;
+          bottom: -25% !important;
+          left: 42% !important;
+          width: 15rem;
+          height: 215rem;
+          margin-top: 6rem;
+          & #types {
+            align-self: center;
+          }
+        }
+        & p {
+          font-size: 2rem;
+        }
+        & .detailsPokemon {
+          position: absolute;
+          top: 138%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          & span {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+    & .containerDetails {
+      flex-direction: column;
+      row-gap: 3rem;
+      margin-top: 18rem;
+      & .columns {
+        justify-content: center;
+        & .cards {
+          display: grid;
+          grid-template-columns: repeat(2, 17rem);
+          gap: 3rem;
+        }
+        & .pokeEvo {
+          height: 36rem;
+        }
+        .card-poke-card {
+          width: 17.8rem;
+          height: 24.5rem;
+          & img {
+            width: 17.4rem;
+          }
+        }
+        .card {
+          width: 20rem;
+          height: 35rem;
+          & ul {
+            & li {
+              margin-bottom: 2rem;
+              color: #fff;
+              & h3 {
+                font-size: 2rem;
+              }
+              & span {
+                font-size: 2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #containerCards {
+    width: 49.5rem;
+    padding: 1rem;
+    & #cardsContainerMore {
+      display: grid;
+      grid-template-columns: repeat(3, 16rem);
+      row-gap: 1rem;
+      & img {
+        width: 15rem;
+        height: 23rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  header {
+    & nav {
+      & ul {
+        & li {
+          & .inputSearchHeader {
+            & form {
+              & input {
+                width: 30rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .detailsPokemon {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    justify-content: center;
+    position: absolute;
+    top: 138%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    & span {
+      font-size: 2.4rem;
+      font-weight: 600;
+    }
+  }
+  .inputSearchHeader {
+    padding: 1rem 2rem;
+    & input {
+      font-size: 1.6rem;
+      width: 20rem;
+    }
+  }
+
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 6rem;
+    & .container {
+      width: 80%;
+      height: 55%;
+      border-radius: 5rem;
+      display: flex;
+      margin-top: 3rem;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      flex-direction: column;
+      & #picPokemon {
+        position: relative;
+        width: 25rem;
+        top: -1.5rem;
+        object-fit: contain;
+      }
+      & .imgContainer {
+        width: 10rem;
+        height: 10rem;
+        display: flex;
+        align-self: center;
+        border-radius: 5rem;
+        margin-top: 6rem;
+        position: absolute;
+        bottom: -36%;
+        left: 57%;
+        transform: translate(-50%, -50%);
+        & #types {
+          position: absolute;
+          align-self: center;
+        }
+      }
+      & .description {
+        width: 24rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        & h2 {
+          font-size: 3rem;
+          font-weight: 900;
+        }
+        & p {
+          font-size: 1.6rem;
+        }
+      }
+    }
+    & .containerDetails {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 10rem;
+      margin-top: 18rem;
+      width: 80dvw;
+      height: 100%;
+      row-gap: 3rem;
+      & .columns {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 2rem;
+        align-items: center;
+        justify-content: center;
+        & h2 {
+          font-size: 2rem;
+          margin-bottom: 1.5rem;
+        }
+        & .cards {
+          display: grid;
+          grid-template-columns: repeat(2, 17rem);
+          gap: 0rem;
+          margin-bottom: 1.5rem;
+          & img {
+            object-fit: contain;
+            width: 15rem;
+          }
+        }
+        & .pokeEvo {
+          display: flex;
+          flex-direction: column;
+          row-gap: 2rem;
+          height: 39rem;
+          overflow: scroll;
+          padding-right: 1rem;
+          padding-bottom: 1rem;
+          .card-poke {
+            width: 13rem;
+            height: 27.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            & h3 {
+              font-size: 2rem;
+            }
+          }
+        }
+
+        .card-poke-card {
+          width: 15.7rem;
+          height: 21.5rem;
+          position: relative;
+          & img {
+            width: 15.4rem;
+            object-fit: contain;
+          }
+        }
+        .card {
+          width: 20rem;
+          height: 35rem;
+          & ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            & li {
+              margin-bottom: 2.3rem;
+              display: flex;
+              align-items: center;
+              & h3 {
+                font-size: 1.8rem;
+              }
+              & span {
+                font-size: 1.8rem;
+                font-weight: 500;
+              }
+            }
+          }
+        }
+
+        & .evo {
+          display: flex;
+          justify-content: baseline;
+          flex-direction: column;
+          row-gap: 1rem;
+          & .rowEvo {
+            border-radius: 2.5rem;
+            display: flex;
+            align-items: center;
+            background-color: green;
+            & img {
+              width: 10rem;
+            }
+            & h3 {
+              font-size: 1.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  #containerCards {
+    width: 33rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 206%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    & #cardsLess {
+      align-self: center;
+      margin-bottom: 2rem;
+    }
+    & #cardsContainerMore {
+      display: grid;
+      grid-template-columns: repeat(2, 16rem);
+      row-gap: 1rem;
+      & img {
+        width: 15rem;
+        height: 23rem;
+      }
+    }
+  }
+}
+
+.bug {
+  background-color: #194323 !important;
+}
+.dark {
+  background-color: #040707 !important;
+}
+.dragon {
+  background-color: #438893 !important;
+}
+.electric {
+  background-color: #e2e32b !important;
+}
+.fairy {
+  background-color: #961a45 !important;
+}
+.fighting {
+  background-color: #994025 !important;
+}
+.fire {
+  background-color: #ab1f24 !important;
+}
+.flying {
+  background-color: #4a677d !important;
+}
+.ghost {
+  background-color: #33336a !important;
+}
+.grass {
+  background-color: #147b3d !important;
+}
+.ground {
+  background-color: #a8702d !important;
+}
+.ice {
+  background-color: #86d2f5 !important;
+}
+.normal {
+  background-color: #75525c !important;
+}
+.poison {
+  background-color: #5e2d89 !important;
+}
+.psychic {
+  background-color: #a52a6c !important;
+}
+.rock {
+  background-color: #48190b !important;
+}
+.steel {
+  background-color: #60756e !important;
+}
+.water {
+  background-color: #1552e1 !important;
+}
