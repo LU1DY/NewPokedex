@@ -16,7 +16,23 @@ const rowDetails = document.getElementById("rowDetails");
 const statsBox = document.querySelector(".stats");
 const pokeEvo = document.querySelector(".pokeEvo");
 const imgTypes = document.getElementById("types");
+const loading = document.getElementById("loading");
 let index = 1;
+
+function showLoading() {
+  document.getElementById("loading").style.display = "block";
+  document.body.classList.add("blur");
+}
+
+function hideLoading() {
+  document.getElementById("loading").style.display = "none";
+  document.body.classList.remove("blur");
+}
+
+showLoading();
+setTimeout(() => {
+  hideLoading();
+}, 3000); 
 
 const fetchPokemon = async (pokemon) => {
   try {

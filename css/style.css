@@ -9,6 +9,7 @@ html,
 body {
   font-size: 62.5%;
   font-family: "Oxanium", cursive;
+  z-index: 1;
 }
 .row {
   display: flex;
@@ -16,6 +17,58 @@ body {
 }
 .overlayContainerCards {
   display: none !important;
+}
+.blur {
+  filter: blur(5px);
+}
+.loader {
+  height: 60px;
+  aspect-ratio: 1;
+  position: fixed;
+  top: 50dvh;
+  left: 50dvw;
+  z-index: 999;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transform-origin: bottom;
+}
+
+.loader::after {
+  background: radial-gradient(at 75% 15%, #fffb, #0000 35%),
+    radial-gradient(at 80% 40%, #0000, #0008),
+    radial-gradient(circle 5px, #fff 94%, #0000),
+    radial-gradient(circle 10px, #000 94%, #0000),
+    linear-gradient(#f93318 0 0) top / 100% calc(50% - 5px),
+    linear-gradient(#fff 0 0) bottom/100% calc(50% - 5px) #000;
+  background-repeat: no-repeat;
+  animation: l20 1s infinite cubic-bezier(0.5, 120, 0.5, -120);
+}
+
+.loader::before {
+  background: #ddd;
+  filter: blur(8px);
+  transform: scaleY(0.4) translate(-13px, 0px);
+}
+
+@keyframes l20 {
+  30%,
+  70% {
+    transform: rotate(0deg);
+  }
+
+  49.99% {
+    transform: rotate(0.2deg);
+  }
+
+  50% {
+    transform: rotate(-0.2deg);
+  }
 }
 button {
   --button_radius: 0.75em;
@@ -171,7 +224,6 @@ main {
         font-size: 2rem;
       }
       & .detailsPokemon {
-        border-bottom: 2px solid #000;
         padding-bottom: 0.5rem;
         display: flex;
         align-items: center;
@@ -183,6 +235,11 @@ main {
         & span {
           font-size: 2.4rem;
           font-weight: 600;
+          border: 2px solid #000;
+          padding: 0.5rem;
+          border-radius: 1rem;
+          background-color: #147b3d;
+          text-transform: capitalize;
         }
       }
     }
