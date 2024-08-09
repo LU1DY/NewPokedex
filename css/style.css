@@ -10,6 +10,12 @@ body {
   font-size: 62.5%;
   font-family: "Oxanium", cursive;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #ffdaaf;
 }
 .row {
   display: flex;
@@ -148,13 +154,14 @@ header {
         justify-content: center;
         column-gap: 2rem;
         & .pokemon {
-          width: 12rem;
+          width: 14rem;
           object-fit: contain;
         }
         & .inputSearchHeader {
           display: flex;
           padding: 1rem 2rem;
           border-radius: 2.5rem;
+          background-color: #fff;
           box-shadow: 0 2px 6px 0 rgba(136, 148, 171, 0.2),
             0 24px 20px -24px rgba(71, 82, 107, 0.1);
           & form {
@@ -177,10 +184,10 @@ main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  row-gap: 6rem;
+  row-gap: 18rem;
   width: 100%;
   padding: 4rem;
-  margin-top: 8rem;
+  margin-top: 58rem;
   & .container {
     width: 80%;
     height: 55%;
@@ -205,6 +212,7 @@ main {
         font-size: 5rem;
         font-weight: 900;
         letter-spacing: -2px;
+        text-transform: capitalize;
       }
       & .imgContainer {
         position: absolute;
@@ -238,7 +246,7 @@ main {
           border: 2px solid #000;
           padding: 0.5rem;
           border-radius: 1rem;
-          background-color: #147b3d;
+          background-color: #e2e32b;
           text-transform: capitalize;
         }
       }

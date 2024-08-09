@@ -19,6 +19,8 @@ const imgTypes = document.getElementById("types");
 const loading = document.getElementById("loading");
 let index = 1;
 
+
+
 function showLoading() {
   document.getElementById("loading").style.display = "block";
   document.body.classList.add("blur");
@@ -32,7 +34,7 @@ function hideLoading() {
 showLoading();
 setTimeout(() => {
   hideLoading();
-}, 3000); 
+}, 3000);
 
 const fetchPokemon = async (pokemon) => {
   try {
@@ -114,7 +116,7 @@ const fetchMultiplePokemon = async (pokemonList) => {
     const data = await fetchPokemon(pokemon);
     if (data) {
       let type = data.types.map(
-        (typeInfo) => `<span id="type">${typeInfo.type.name}</span>`
+        (typeInfo) => `<span id="type" class="${data.types[0].type.name}">${typeInfo.type.name}</span>`
       );
       pokeEvo.innerHTML += `
       <div class="card-poke ${data.types[0].type.name}">
@@ -140,8 +142,8 @@ const renderPokemon = async (pokemon) => {
 
     typesBox.innerHTML =
       data.types
-        .map((typeInfo) => `<span id="type">${typeInfo.type.name}</span>`)
-        .join("") + `<span id="index">n°${data.id}</span>`;
+        .map((typeInfo) => `<span id="type" class="${data.types[0].type.name}">${typeInfo.type.name}</span>`)
+        .join("") + `<span id="index" class="${data.types[0].type.name}">n°${data.id}</span>`;
     imgTypes.src = `assets/tipos/${data.types[0].type.name}.png`;
     statsBox.innerHTML = `
       <li><h3>HP</h3><span id="hp">${stats.hp}</span></li>
